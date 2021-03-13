@@ -5,13 +5,13 @@ alias h='history'
 scrun() {
 	# speeds up the creation of scripts by running chmod.
 	# just call scrun + file name
-
-
+	
 	file=$1
+	script="./\$file"
 
 	# help
 	if [[ "$1" == "-h" ]]; then
-		echo "speeds up the creation of scripts by running chmod. just call scrun + file name"
+		echo "speeds up the run of scripts by running chmod. just call scrun + file name"
 		return
 	fi
 
@@ -21,12 +21,18 @@ scrun() {
 		return	
 	fi
 
+	#copy if there are options
+	while [ -n "$1" ]; do
+		script="$script $1"
+		shift
+	done
+
 	# check if file alredy chmod
 	in=`ls -l $file`
 	if [[ $in == *"-rwxrwxr-x"* ]]; then
-		./$file
+		eval $script
 	else
 		chmod +x $file
-		./$file
+		eval $script
 	fi
 }
