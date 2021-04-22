@@ -1,26 +1,34 @@
 #!/bin/bash
-log(){
-	ret=`echo $?`
-	if [[ $ret == 0 ]]; then
-		echo "$cmd" >> install_sucess
-	else
-		echo "$cmd" >> install_fail
-	fi
-}
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd $parent_path
 
-touch 
+source programs.sh
 
-echo "### Instalação gcc ###"
-cmd="apt-get install -y build-essential"
-sudo apt-get install -y build-essential
-log
+log_install="$parent_path/installsuccess"
+log_fail="$parent_path/installfail"
 
-echo "### Instalação Minicom ###"
-cmd="apt install -y minicom"
-sudo apt install -y minicom
-log
+rm $log_install
+touch $log_install
+rm $log_fail
+touch $log_fail
 
-echo "### Instalação Minicom ###"
-cmd="apt install -y git-all"
-sudo apt install -y git-all
-log
+#sudo apt update
+sudo cp .bash_aliases /$USER
+cd ~
+source .bash_aliases 
+
+
+#programs.sh
+run_programs
+
+#printa resultados e falhas
+cd $parent_path
+echo "######## SUCESS ########"
+cat $log_install
+
+echo "######## FAIL ########"
+cat $log_fail
+
+
+
+	
