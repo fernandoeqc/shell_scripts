@@ -11,27 +11,31 @@ log(){
 run(){	
 	#verifica se o programa ja esta instalado
 	if [[ $verify != 0 ]]; then
-		$verify 1>/dev/null 
+		$verify 1>/dev/null 2>&1
 		last_cmd=`echo $?`
+		#echo $last_cmd
 		verify=0
 	
-		if [[ $last_cmd != 0 ]]; then
-			install=1
+		if [[ $last_cmd == 127 ]]; then
+			run_install=1
 		else
 			echo "$cmd already install" >> $log_install	
 		fi
 	fi
 	
-	if [[ install == 1 ]]; then
-		echo "vai instalar..............................."
-		#sudo $cmd
-		#log
+	if [[ $run_install == 1 ]]; then
+		echo $cmd
+		sudo $cmd
+		log
+		run_install=0
 	fi
+	
 	#clear
 
 }
 
 brave(){
+	echo'
 	sudo apt install apt-transport-https curl
 
 	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -41,11 +45,12 @@ brave(){
 	sudo apt update
 
 	sudo apt install brave-browser
+	'
 }
 
 run_programs(){
 	echo "### Instalação gedit ###"
-	cmd="sudo apt  install gedit"
+	cmd="sudo apt  install -y gedit"
 	verify="gedit --help"
 	run
 
@@ -56,7 +61,7 @@ run_programs(){
 
 	echo "### Instalação Minicom ###"
 	cmd="apt install -y minicom"
-	verify="minicom -v"
+	verify="minicom --help"
 	run
 
 	echo "### Instalação Git ###"
@@ -65,12 +70,33 @@ run_programs(){
 	run
 
 	echo "### Instalação VS Code ###"
-	cmd="snap install --classic code"
-	verify="code -v --user-data-dir"
+	cmd="snap install --classic code "
+	verify="code --help"
 	run
 
 
 	echo "### Instalação Brave ###"
-	#brave
-	#log
+	cmd=brave
+	verify="brave-browser -h"
+	run
+	
+	echo "### install tmux###"
+	cmd="sudo apt  install -y tmux"
+	verify="tmux --help"
+	run
+	
+	echo "### install hexedit###"
+	cmd="sudo apt install -y hexedit"
+	verify="hexedit --help"
+	run
+	
+	echo "### install nmap###"
+	cmd="sudo apt  install -y nmap"
+	verify="nmap --help"
+	run
+	
+	echo "### install socat###"
+	cmd="sudo apt install socat -y"
+	verify="socat --help"
+	run
 }

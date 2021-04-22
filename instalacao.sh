@@ -23,11 +23,17 @@ source .bash_aliases
 #programs.sh
 run_programs
 
+
 #printa resultados e falhas
+echo "
+
+"
 cd $parent_path
 echo "######## SUCESS ########"
 cat $log_install
+echo "
 
+"
 echo "######## FAIL ########"
 cat $log_fail
 
