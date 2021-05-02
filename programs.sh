@@ -99,4 +99,9 @@ run_programs(){
 	cmd="sudo apt install socat -y"
 	verify="socat --help"
 	run
+	
+	echo "### install net-tools###"
+	cmd="sudo apt install net-tools -y"
+	verify="ifconfig -h"
+	run
 }
