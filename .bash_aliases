@@ -1,9 +1,12 @@
-alias 'aliases'='nano .bash_aliases'
+alias 'aliases'='nano ~/.bash_aliases'
 
 alias cls='clear'
 alias open='xdg-open'
 alias h='history'
 
+### Keyboards###
+alias 'key-pt'='setxkbmap -model abnt2 -layout br -variant abnt2'
+alias 'key-us'='setxkbmap us'
 
 #### PORT COMUNICATION ###
 alias 'pty'='socat -d -d pty,echo=0,raw pty,echo=0,raw'

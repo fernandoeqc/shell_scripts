@@ -29,7 +29,7 @@ run(){
 		log
 		run_install=0
 	fi
-	
+
 	#clear
 
 }
@@ -74,34 +74,38 @@ run_programs(){
 	verify="code --help"
 	run
 
-
 	echo "### Instalação Brave ###"
 	cmd=brave
-	verify="brave-browser -h"
+	verify="brave"
 	run
-	
+
 	echo "### install tmux###"
 	cmd="sudo apt  install -y tmux"
 	verify="tmux --help"
 	run
-	
+
 	echo "### install hexedit###"
 	cmd="sudo apt install -y hexedit"
 	verify="hexedit --help"
 	run
-	
+
 	echo "### install nmap###"
 	cmd="sudo apt  install -y nmap"
 	verify="nmap --help"
 	run
-	
+
 	echo "### install socat###"
 	cmd="sudo apt install socat -y"
 	verify="socat --help"
 	run
-	
+
 	echo "### install net-tools###"
 	cmd="sudo apt install net-tools -y"
 	verify="ifconfig -h"
+	run
+
+	echo "### install filelight###"
+	cmd="sudo apt install filelight -y"
+	verify="filelight -h"
 	run
 }
