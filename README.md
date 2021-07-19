@@ -1,5 +1,5 @@
 # shell_scripts
-simple scripts for studing
+Script to install programs  
 
-## instalacao.sh
-Instala pacotes listados no arquivo 'program'
+## instalal.sh
+Install app packets in 'program' file
