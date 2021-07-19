@@ -8,21 +8,21 @@ log(){
 	fi
 }
 
-run(){	
+run(){
 	#verifica se o programa ja esta instalado
 	if [[ $verify != 0 ]]; then
 		$verify 1>/dev/null 2>&1
 		last_cmd=`echo $?`
-		#echo $last_cmd
+		### echo $last_cmd
 		verify=0
-	
+
 		if [[ $last_cmd == 127 ]]; then
 			run_install=1
 		else
-			echo "$cmd already install" >> $log_install	
+			echo "$cmd already install" >> $log_install
 		fi
 	fi
-	
+
 	if [[ $run_install == 1 ]]; then
 		echo $cmd
 		sudo $cmd
@@ -35,17 +35,13 @@ run(){
 }
 
 brave(){
-	echo'
+	echo "
 	sudo apt install apt-transport-https curl
-
 	sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-
 	echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
 	sudo apt update
-
 	sudo apt install brave-browser
-	'
+	"
 }
 
 run_programs(){
@@ -107,5 +103,10 @@ run_programs(){
 	echo "### install filelight###"
 	cmd="sudo apt install filelight -y"
 	verify="filelight -h"
+	run
+
+	echo "### install sublime ###"
+	cmd="sudo snap install --classic sublime-text"
+	verify="subl -h"
 	run
 }

@@ -6,8 +6,8 @@ cd $parent_path
 
 source programs.sh
 
-log_install="$parent_path/installsuccess"
-log_fail="$parent_path/installfail"
+log_install="$parent_path/success_install"
+log_fail="$parent_path/fail_install"
 
 rm $log_install
 touch $log_install
