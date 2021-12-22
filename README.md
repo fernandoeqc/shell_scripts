@@ -1,5 +1,12 @@
-# shell_scripts
-Script to install programs  
+# Script Installer
+Script to install programs in Linux.
 
-## instalal.sh
-Install app packets in 'program' file
+Tested on Xubuntu and Ubuntu systems.
+___
+## install.sh
+Install app packets in 'programs.sh' file. 
+
+## Futher Features:
+* Choose which programs to install
+* add commands with multiple lines
+
