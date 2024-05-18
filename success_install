@@ -1,13 +1,13 @@
 sudo apt  install -y gedit already install
 apt-get install -y build-essential already install
-apt install -y minicom
+apt install -y minicom already install
 apt install -y git-all already install
-snap install --classic code 
 brave already install
-sudo apt  install -y tmux
-sudo apt install -y hexedit
-sudo apt  install -y nmap
-sudo apt install socat -y
-sudo apt install net-tools -y
-sudo apt install filelight -y
-sudo snap install --classic sublime-text
+sudo apt  install -y tmux already install
+sudo apt install -y hexedit already install
+sudo apt  install -y nmap already install
+sudo apt install socat -y already install
+sudo apt install net-tools -y already install
+sudo apt install filelight -y already install
+sudo snap install --classic sublime-text already install
+sudo apt  install cmake

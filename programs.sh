@@ -65,10 +65,11 @@ run_programs(){
 	verify="git --help"
 	run
 
-	echo "### Instalação VS Code ###"
-	cmd="snap install --classic code "
-	verify="code --help"
-	run
+	# must install from .deb 
+	# echo "### Instalação VS Code ###"
+	# cmd="snap install --classic code "
+	# verify="code --help"
+	# run
 
 	echo "### Instalação Brave ###"
 	cmd=brave
@@ -108,5 +109,10 @@ run_programs(){
 	echo "### install sublime ###"
 	cmd="sudo snap install --classic sublime-text"
 	verify="subl -h"
+	run
+	
+	echo "### install cmake ###"
+	cmd="sudo apt  install cmake"
+	verify="cmake --version"
 	run
 }
